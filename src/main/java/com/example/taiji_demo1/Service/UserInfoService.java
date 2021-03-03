@@ -45,6 +45,7 @@ public class UserInfoService  {
     //添加用户
     public void  addUsers( User user){
         userRepository.save(user);
+        logger.info("UserInfoService-addUsers,添加用户,用户json：{}",user);
     }
 
 
@@ -52,6 +53,7 @@ public class UserInfoService  {
     //根据id删除用户
     public void delete( Integer id){
         userRepository.deleteById(id);
+        logger.info("UserInfoService-delete,根据id删除用户,用户id：{}",id);
     }
 
 
@@ -62,22 +64,23 @@ public class UserInfoService  {
         User user =  userRepository.findById(id).get();
         user.setName(name);
         userRepository.save(user);
+        logger.info("UserInfoService-update,根据用户ID修改用户姓名,用户json：{}",user);
     }
 
 
 
     //根据用户id查询用户信息
     public User find( Integer id){
-
         User user =  userRepository.findById(id).get();
+        logger.info("UserInfoService-update,根据用户id查询用户信息,用户json：{}",user);
         return user;
     }
 
 
     //查找所有用户
-
     public List<User> findAll( ){
         List<User> list =  userRepository.findAll();
+        logger.info("UserInfoService-findAll,查找所有用户,用户json：{}",list);
         return list;
     }
 
